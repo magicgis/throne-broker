@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 # Copyright (c) 2012-2015 Andrea Selva
+# Modified by Kevin Berendsen to Throne it's needs.
 #
 
 echo "Throne Broker"
@@ -24,7 +25,7 @@ done
 PRGDIR=`dirname "$PRG"`
 
 # Only set MOQUETTE_HOME if not already set
-[ -f "$MOQUETTE_HOME"/bin/moquette.sh ] || MOQUETTE_HOME=`cd "$PRGDIR/.." ; pwd`
+[ -f "$MOQUETTE_HOME"/bin/throne-broker.sh ] || MOQUETTE_HOME=`cd "$PRGDIR/.." ; pwd`
 export MOQUETTE_HOME
 
 # Set JavaHome if it exists
@@ -41,5 +42,4 @@ MOQUETTE_PATH=$MOQUETTE_HOME/
 #LOG_FILE_LEVEL=fine
 JAVA_OPTS_SCRIPT="-XX:+HeapDumpOnOutOfMemoryError -Djava.awt.headless=true"
 
-$JAVA -server $JAVA_OPTS $JAVA_OPTS_SCRIPT -Dlog4j.configuration="file:$LOG_FILE" -Dmoquette.path="$MOQUETTE_PATH" -cp "$MOQUETTE_HOME/lib/*" nl.kevinberendsen.throne.Server
-
+$JAVA -server $JAVA_OPTS $JAVA_OPTS_SCRIPT -Dlog4j.configuration="file:$LOG_FILE" -Dmoquette.path="$MOQUETTE_PATH" -cp "$MOQUETTE_HOME/lib/*" nl.kevinberendsen.throne.EmbeddedServer

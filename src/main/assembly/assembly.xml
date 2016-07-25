@@ -17,13 +17,23 @@
         </file>
 
         <file>
-            <source>src/main/resources/log4j.properties</source>
+            <source>src/main/resources/config/log4j.properties</source>
             <outputDirectory>config/</outputDirectory>
             <destName>moquette-log.properties</destName>
         </file>
 
         <file>
-            <source>src/main/resources/moquette.conf</source>
+            <source>src/main/resources/config/password_file.conf</source>
+            <outputDirectory>config/</outputDirectory>
+        </file>
+
+        <file>
+            <source>src/main/resources/config/acl.conf</source>
+            <outputDirectory>config/</outputDirectory>
+        </file>
+
+        <file>
+            <source>src/main/resources/config/moquette.conf</source>
             <outputDirectory>config/</outputDirectory>
         </file>
     </files>
