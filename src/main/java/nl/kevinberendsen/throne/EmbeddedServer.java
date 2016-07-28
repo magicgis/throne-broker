@@ -24,19 +24,11 @@ public class EmbeddedServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(EmbeddedServer.class);
 
-    static class PublisherListener extends AbstractInterceptHandler {
-
-        @Override
-        public void onPublish(InterceptPublishMessage msg) {
-            System.out.println("Received on topic: " + msg.getTopicName() + " content: " + new String(msg.getPayload().array()));
-        }
-    }
-
     public static void main(String[] args) throws InterruptedException, IOException {
         final IConfig classPathConfig = new ClasspathConfig();
 
         final Server mqttBroker = new Server();
-        List<? extends InterceptHandler> userHandlers = asList(new PublisherListener());
+        List<? extends InterceptHandler> userHandlers = asList(new ThroneInterceptHandler());
         mqttBroker.startServer(classPathConfig,
                 userHandlers,
                 null, // ssl context
