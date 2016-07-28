@@ -39,7 +39,10 @@ public class ThroneInterceptHandler extends AbstractInterceptHandler {
 
     @Override
     public void onPublish(InterceptPublishMessage msg) {
-        System.out.println("Received on topic: " + msg.getTopicName() + " content: " + new String(msg.getPayload().array()));
+        LOG.debug(String.format("onPublish: %s is trying to publish on %s with %s.",
+                msg.getClientID(),
+                msg.getTopicName(),
+                new String(msg.getPayload().array())));
     }
 
 }
