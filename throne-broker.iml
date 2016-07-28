@@ -40,5 +40,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.5" level="project" />
     <orderEntry type="library" name="Maven: org.avaje.ebeanorm:avaje-ebeanorm-querybean:7.15.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.avaje.ebeanorm:querybean-generator:2.3.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2" level="project" />
   </component>
 </module>

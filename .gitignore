@@ -53,3 +53,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+/moquette_store.mapdb
+/moquette_store.mapdb.p
+/moquette_store.mapdb.t
+/thronebroker.log

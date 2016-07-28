@@ -17,7 +17,7 @@
         </file>
 
         <file>
-            <source>src/main/resources/config/log4j.properties</source>
+            <source>src/main/resources/log4j.properties</source>
             <outputDirectory>config/</outputDirectory>
             <destName>moquette-log.properties</destName>
         </file>

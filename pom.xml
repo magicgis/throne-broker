@@ -32,6 +32,11 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+
+        <repository>
+            <id>Eclipse Paho Repo</id>
+            <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -84,6 +89,14 @@
             <artifactId>querybean-generator</artifactId>
             <version>2.3.1</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- mqtt client for testing -->
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

@@ -8,6 +8,8 @@ import io.moquette.proto.messages.PublishMessage;
 import io.moquette.server.Server;
 import io.moquette.server.config.ClasspathConfig;
 import io.moquette.server.config.IConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -19,6 +21,8 @@ import static java.util.Arrays.asList;
  * Created by nedermail on 24/07/16.
  */
 public class EmbeddedServer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(EmbeddedServer.class);
 
     static class PublisherListener extends AbstractInterceptHandler {
 
@@ -33,7 +37,11 @@ public class EmbeddedServer {
 
         final Server mqttBroker = new Server();
         List<? extends InterceptHandler> userHandlers = asList(new PublisherListener());
-        mqttBroker.startServer(classPathConfig, userHandlers);
+        mqttBroker.startServer(classPathConfig,
+                userHandlers,
+                null, // ssl context
+                new ThroneAuthenticator(),
+                new ThroneAuthorizator());
 
         System.out.println("Broker started press [CTRL+C] to stop");
         //Bind  a shutdown hook
@@ -47,7 +55,7 @@ public class EmbeddedServer {
         });
 
         Thread.sleep(2000);
-        System.out.println("Before self publish");
+        LOG.debug("Before self publish");
         PublishMessage message = new PublishMessage();
         message.setTopicName("/exit");
         message.setRetainFlag(true);
@@ -56,6 +64,6 @@ public class EmbeddedServer {
         message.setQos(AbstractMessage.QOSType.EXACTLY_ONCE);
         message.setPayload(ByteBuffer.wrap("Hello World!!".getBytes()));
         mqttBroker.internalPublish(message);
-        System.out.println("After self publish");
+        LOG.debug("After self publish");
     }
 }
