@@ -24,10 +24,36 @@ public class EmbeddedServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(EmbeddedServer.class);
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    /**
+     * Moquette broker instance.
+     */
+    private Server mqttBroker = null;
+
+    /**
+     * Public constructor that creates a new instance of Server class
+     * and stores it in mqttBroker.
+     */
+    public EmbeddedServer() {
+        mqttBroker = new Server();
+    }
+
+    /**
+     * Obtain the MQTT broker instance.
+     * @return null if mqttBroker is not initialized and otherwise it's returning a Server object.
+     */
+    public Server getBroker() {
+        return mqttBroker;
+    }
+
+    /**
+     * Adds instance of ThroneInterceptHandler to list of InterceptHandler handlers and starts the MQTT broker with
+     * ThroneAuthenticator and ThroneAuthorizator. Adds a shutdown hook to stop the broker.
+     * @throws InterruptedException
+     * @throws IOException
+     */
+    public void run() throws InterruptedException, IOException {
         final IConfig classPathConfig = new ClasspathConfig();
 
-        final Server mqttBroker = new Server();
         List<? extends InterceptHandler> userHandlers = asList(new ThroneInterceptHandler());
         mqttBroker.startServer(classPathConfig,
                 userHandlers,
@@ -45,17 +71,20 @@ public class EmbeddedServer {
                 System.out.println("Broker stopped");
             }
         });
+    }
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+        EmbeddedServer server = new EmbeddedServer();
+        server.run();
 
         Thread.sleep(2000);
         LOG.debug("Before self publish");
         PublishMessage message = new PublishMessage();
-        message.setTopicName("/exit");
+        message.setTopicName("exit");
         message.setRetainFlag(true);
-//        message.setQos(AbstractMessage.QOSType.MOST_ONE);
-//        message.setQos(AbstractMessage.QOSType.LEAST_ONE);
         message.setQos(AbstractMessage.QOSType.EXACTLY_ONCE);
         message.setPayload(ByteBuffer.wrap("Hello World!!".getBytes()));
-        mqttBroker.internalPublish(message);
+        server.getBroker().internalPublish(message);
         LOG.debug("After self publish");
     }
 }
