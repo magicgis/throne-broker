@@ -1,5 +1,10 @@
 package nl.kevinberendsen.throne;
 
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.EbeanServer;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 import io.moquette.interception.AbstractInterceptHandler;
 import io.moquette.interception.InterceptHandler;
 import io.moquette.interception.messages.InterceptPublishMessage;
@@ -8,6 +13,8 @@ import io.moquette.proto.messages.PublishMessage;
 import io.moquette.server.Server;
 import io.moquette.server.config.ClasspathConfig;
 import io.moquette.server.config.IConfig;
+import nl.kevinberendsen.throne.db.EbeanModule;
+import nl.kevinberendsen.throne.db.models.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,6 +52,8 @@ public class EmbeddedServer {
         return mqttBroker;
     }
 
+    @Inject private EbeanServer server;
+
     /**
      * Adds instance of ThroneInterceptHandler to list of InterceptHandler handlers and starts the MQTT broker with
      * ThroneAuthenticator and ThroneAuthorizator. Adds a shutdown hook to stop the broker.
@@ -52,6 +61,7 @@ public class EmbeddedServer {
      * @throws IOException
      */
     public void run() throws InterruptedException, IOException {
+        // Loading moquette configuration
         final IConfig classPathConfig = new ClasspathConfig();
 
         List<? extends InterceptHandler> userHandlers = asList(new ThroneInterceptHandler());

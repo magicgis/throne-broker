@@ -7,7 +7,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target/archive-tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
+      <excludeFolder url="file://$MODULE_DIR$/target/surefire" />
+      <excludeFolder url="file://$MODULE_DIR$/target/surefire-reports" />
+      <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -39,6 +45,10 @@
     <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.5.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.5" level="project" />
     <orderEntry type="library" name="Maven: org.avaje.ebeanorm:avaje-ebeanorm-querybean:7.15.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.inject:guice:4.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:16.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.avaje.ebeanorm:querybean-generator:2.3.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2" level="project" />
   </component>

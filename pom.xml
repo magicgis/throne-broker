@@ -62,6 +62,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- mysql driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -81,6 +82,13 @@
             <groupId>org.avaje.ebeanorm</groupId>
             <artifactId>avaje-ebeanorm-querybean</artifactId>
             <version>7.15.1</version>
+        </dependency>
+
+        <!-- dependency injection -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
         </dependency>
 
         <!-- java annotation processor to generate query beans -->

@@ -3,6 +3,7 @@ package nl.kevinberendsen.throne;
 import junit.framework.TestSuite;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 
 /**
  * This TestSuite is primarily created to test the basic functions
@@ -10,6 +11,7 @@ import org.junit.Before;
  *
  * Created by nedermail on 29/07/16.
  */
+@Ignore
 public class MqttClientTest extends TestSuite {
 
     /**
