@@ -52,7 +52,6 @@ public class EmbeddedServer {
         return mqttBroker;
     }
 
-    @Inject private EbeanServer server;
 
     /**
      * Adds instance of ThroneInterceptHandler to list of InterceptHandler handlers and starts the MQTT broker with
