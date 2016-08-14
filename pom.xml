@@ -34,6 +34,17 @@
         </repository>
 
         <repository>
+            <id>bintray</id>
+            <url>http://dl.bintray.com/kevto/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
             <id>Eclipse Paho Repo</id>
             <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
         </repository>
@@ -45,6 +56,13 @@
             <groupId>io.moquette</groupId>
             <artifactId>moquette-broker</artifactId>
             <version>0.8</version>
+        </dependency>
+
+        <!-- RocksDB persistence -->
+        <dependency>
+            <groupId>nl.kevinberendsen</groupId>
+            <artifactId>moquette-rocksdb</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <!-- Logging -->
