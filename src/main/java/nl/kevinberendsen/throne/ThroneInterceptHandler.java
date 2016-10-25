@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by nedermail on 29/07/16.
+ * @author Kevin Berendsen
  */
 public class ThroneInterceptHandler extends AbstractInterceptHandler {
 

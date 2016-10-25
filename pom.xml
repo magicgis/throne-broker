@@ -21,7 +21,7 @@
         </developer>
     </developers>
 
-    <repositories>
+    <repositories>    
         <repository>
             <id>bintray</id>
             <url>http://dl.bintray.com/andsel/maven/</url>
@@ -34,20 +34,15 @@
         </repository>
 
         <repository>
-            <id>bintray</id>
-            <url>http://dl.bintray.com/kevto/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
             <id>Eclipse Paho Repo</id>
             <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
         </repository>
+        
+        <repository>
+	        <id>oss-sonatype</id>
+	        <name>oss-sonatype</name>
+	        <url>https://oss.sonatype.org/content/repositories/</url>
+    	</repository>
     </repositories>
 
     <dependencies>
@@ -56,13 +51,6 @@
             <groupId>io.moquette</groupId>
             <artifactId>moquette-broker</artifactId>
             <version>0.8</version>
-        </dependency>
-
-        <!-- RocksDB persistence -->
-        <dependency>
-            <groupId>nl.kevinberendsen</groupId>
-            <artifactId>moquette-rocksdb</artifactId>
-            <version>1.0</version>
         </dependency>
 
         <!-- Logging -->
@@ -88,33 +76,19 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.avaje.ebeanorm/avaje-ebeanorm -->
-        <dependency>
-            <groupId>org.avaje.ebeanorm</groupId>
-            <artifactId>avaje-ebeanorm</artifactId>
-            <version>7.19.1</version>
-        </dependency>
+		<dependency>
+		    <groupId>org.avaje.ebean</groupId>
+		    <artifactId>ebean</artifactId>
+		    <version>8.5.1</version>
+		</dependency>
 
 
-        <!-- support for query beans -->
-        <dependency>
-            <groupId>org.avaje.ebeanorm</groupId>
-            <artifactId>avaje-ebeanorm-querybean</artifactId>
-            <version>7.15.1</version>
-        </dependency>
 
         <!-- dependency injection -->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>4.0</version>
-        </dependency>
-
-        <!-- java annotation processor to generate query beans -->
-        <dependency>
-            <groupId>org.avaje.ebeanorm</groupId>
-            <artifactId>querybean-generator</artifactId>
-            <version>2.3.1</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- mqtt client for testing -->
@@ -153,22 +127,22 @@
             </plugin>
 
             <plugin>
-                <groupId>org.avaje.ebeanorm</groupId>
-                <artifactId>avaje-ebeanorm-mavenenhancer</artifactId>
-                <version>4.11.1</version>
-                <executions>
-                    <execution>
-                        <id>main</id>
-                        <phase>process-classes</phase>
-                        <configuration>
-                            <transformArgs>debug=1</transformArgs>
-                        </configuration>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+			  <groupId>org.avaje.ebean</groupId>
+			  <artifactId>ebean-maven-plugin</artifactId>
+			  <version>8.1.1</version>
+			  <executions>
+			    <execution>
+			      <id>main</id>
+			      <phase>process-classes</phase>
+			      <configuration>
+			        <transformArgs>debug=1</transformArgs>
+			      </configuration>
+			      <goals>
+			        <goal>enhance</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
         </plugins>
     </build>
 

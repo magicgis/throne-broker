@@ -24,9 +24,9 @@ done
 # Get standard environment variables
 PRGDIR=`dirname "$PRG"`
 
-# Only set MOQUETTE_HOME if not already set
-[ -f "$MOQUETTE_HOME"/bin/throne-broker.sh ] || MOQUETTE_HOME=`cd "$PRGDIR/.." ; pwd`
-export MOQUETTE_HOME
+# Only set THRONE_HOME if not already set
+[ -f "$THRONE_HOME"/bin/throne-broker.sh ] || THRONE_HOME=`cd "$PRGDIR/.." ; pwd`
+export THRONE_HOME
 
 # Set JavaHome if it exists
 if [ -f "${JAVA_HOME}/bin/java" ]; then
@@ -36,10 +36,10 @@ else
 fi
 export JAVA
 
-LOG_FILE=$MOQUETTE_HOME/config/moquette-log.properties
-MOQUETTE_PATH=$MOQUETTE_HOME/
+LOG_FILE=$THRONE_HOME/config/throne-log.properties
+THRONE_PATH=$THRONE_HOME/
 #LOG_CONSOLE_LEVEL=info
 #LOG_FILE_LEVEL=fine
 JAVA_OPTS_SCRIPT="-XX:+HeapDumpOnOutOfMemoryError -Djava.awt.headless=true"
 
-$JAVA -server $JAVA_OPTS $JAVA_OPTS_SCRIPT -Dlog4j.configuration="file:$LOG_FILE" -Dmoquette.path="$MOQUETTE_PATH" -cp "$MOQUETTE_HOME/lib/*" nl.kevinberendsen.throne.EmbeddedServer
+$JAVA -server $JAVA_OPTS $JAVA_OPTS_SCRIPT -Dlog4j.configuration="file:$LOG_FILE" -Dmoquette.path="$THRONE_PATH" -cp "$THRONE_HOME/lib/*" nl.kevinberendsen.throne.EmbeddedServer

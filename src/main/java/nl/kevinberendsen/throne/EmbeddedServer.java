@@ -1,31 +1,26 @@
 package nl.kevinberendsen.throne;
 
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.EbeanServer;
-import com.google.inject.Guice;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-import io.moquette.interception.AbstractInterceptHandler;
-import io.moquette.interception.InterceptHandler;
-import io.moquette.interception.messages.InterceptPublishMessage;
-import io.moquette.proto.messages.AbstractMessage;
-import io.moquette.proto.messages.PublishMessage;
-import io.moquette.server.Server;
-import io.moquette.server.config.ClasspathConfig;
-import io.moquette.server.config.IConfig;
-import nl.kevinberendsen.throne.db.EbeanModule;
-import nl.kevinberendsen.throne.db.models.Account;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static java.util.Arrays.asList;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import static java.util.Arrays.asList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.moquette.interception.InterceptHandler;
+import io.moquette.proto.messages.AbstractMessage;
+import io.moquette.proto.messages.PublishMessage;
+import io.moquette.server.Server;
+import io.moquette.server.config.ClasspathConfig;
+import io.moquette.server.config.IConfig;
 
 /**
- * Created by nedermail on 24/07/16.
+ * Embedding the server. Entry point of the application
+ * which also starts the MQTT broker.
+ * 
+ * @author Kevin Berendsen
  */
 public class EmbeddedServer {
 
